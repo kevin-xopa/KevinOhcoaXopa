@@ -40,10 +40,12 @@ class ProductsController extends Controller
             ->orWhere('product_translations.long_description', 'like', "%$request->needle%")
             ->orWhere('product_translations.url', 'like', "%$request->needle%") : $products;
 
+        $products =  $products->where('product_translations.language', "es");
+
         if ($request->recently != false) {
-            $products = $products->orderBy('products.name', 'ASC');
+            $products = $products->orderBy('product_translations.name', 'ASC');
         } else {
-            $products = $request->order_by != null ? $products->orderBy('products.created_at', $request->order_by) : $products->orderBy('products.name', 'ASC');
+            $products = $request->order_by != null ? $products->orderBy('product_translations.name', $request->order_by) : $products->orderBy('product_translations.name', 'ASC');
         }
 
         $products = $request->items_for_paginate != null ? $products->paginate($request->items_for_paginate) : $products->get();
@@ -72,8 +74,25 @@ class ProductsController extends Controller
 
     public function update(StoreProductPut $request)
     {
-        Product::where('id', $request->id)->update($request->validated());
-        ProductTranslation::where('url', $request->old_url)->update($request->validated());
+        $data = $request->validated();
+        $product_up = $request->validated();
+        unset($product_up['name']);
+        unset($product_up['description']);
+        unset($product_up['long_description']);
+        unset($product_up['url']);
+        unset($product_up['language']);
+        unset($product_up['id_product_translations']);
+        Product::where('id', $request->id)->update($product_up);
+
+        $data["id"] = $data["id_product_translations"];
+        unset($data['sku']);
+        unset($data['dollar_price']);
+        unset($data['price_pesos']);
+        unset($data['points']);
+        unset($data['active']);
+        unset($data['id_product_translations']);
+
+        ProductTranslation::where('url', $request->old_url)->update($data);
 
         $obj_request = new Request();
         $obj_request->query->add(['url' => $request->url]);

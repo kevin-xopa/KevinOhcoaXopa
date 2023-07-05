@@ -1,7 +1,91 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+#background-register-view {
+    background-image: url("/images/fondos/background-login-and-register.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-[x-cloak] {
+#background-login-view {
+    background-image: url("/images/fondos/background-second.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#background-reset-view {
+    background-image: url("/images/fondos/background-login-and-register.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.background-navigation {
+    background-image: url("https://cdn.pixabay.com/photo/2022/12/30/17/10/monstera-7687340_1280.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+html::-webkit-scrollbar {
+    width: 8px;
+    /* Tamaño del scroll en vertical */
+    height: 8px;
+    /* Tamaño del scroll en horizontal */
     display: none;
+    /* Ocultar scroll */
+}
+
+.sidenav::-webkit-scrollbar,
+.v-table__wrapper::-webkit-scrollbar,
+.modal-content::-webkit-scrollbar,
+.modal::-webkit-scrollbar,
+.v-virtual-scroll::-webkit-scrollbar,
+.dropdown-content.select-dropdown::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.sidenav::-webkit-scrollbar:vertical,
+.v-table__wrapper::-webkit-scrollbar:vertical,
+.modal-content::-webkit-scrollbar:vertical,
+.modal::-webkit-scrollbar:vertical,
+.v-virtual-scroll::-webkit-scrollbar:vertical,
+.dropdown-content.select-dropdown::-webkit-scrollbar:vertical {
+    width: 5px;
+}
+
+.sidenav::-webkit-scrollbar-button:increment,
+.v-table__wrapper::-webkit-scrollbar-button:increment,
+.modal-content::-webkit-scrollbar-button:increment,
+.modal::-webkit-scrollbar-button:increment,
+.v-virtual-scroll::-webkit-scrollbar-button:increment,
+.dropdown-content.select-dropdown::-webkit-scrollbar-button:increment {
+    display: none;
+}
+
+.sidenav::-webkit-scrollbar:horizontal,
+.v-table__wrapper::-webkit-scrollbar:horizontal,
+.modal-content::-webkit-scrollbar:horizontal,
+.modal::-webkit-scrollbar:horizontal,
+.v-virtual-scroll::-webkit-scrollbar:horizontal,
+.dropdown-content.select-dropdown::-webkit-scrollbar:horizontal {
+    height: 5px;
+}
+
+.sidenav::-webkit-scrollbar-thumb,
+.v-table__wrapper::-webkit-scrollbar-thumb,
+.modal-content::-webkit-scrollbar-thumb,
+.modal::-webkit-scrollbar-thumb,
+.v-virtual-scroll::-webkit-scrollbar-thumb,
+.dropdown-content.select-dropdown::-webkit-scrollbar-thumb {
+    background-color: #00000081;
+    border-radius: 1em;
+}
+
+.sidenav::-webkit-scrollbar-track,
+.v-table__wrapper::-webkit-scrollbar-track,
+.modal-content::-webkit-scrollbar-track,
+.modal::-webkit-scrollbar-track,
+.v-virtual-scroll::-webkit-scrollbar-track,
+.dropdown-content.select-dropdown::-webkit-scrollbar-track {
+    border-radius: 10px;
 }

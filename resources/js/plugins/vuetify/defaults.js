@@ -141,7 +141,6 @@ export default {
     elevation: 10,
     rounded: 'lg',
     noDataText: 'Resultados no encontrados',
-    density: "compact",
     height: "800",
   },
   VSnackbar: {

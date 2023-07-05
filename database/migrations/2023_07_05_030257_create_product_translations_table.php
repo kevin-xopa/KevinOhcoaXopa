@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('description', 255);
             $table->text('long_description')->nullable();
-            $table->text('url')->unique();
+            $table->string('url', 255)->unique();
             $table->string('language');
             $table->foreignId('product_id')->constrained('products')
                 ->onUpdate('cascade')

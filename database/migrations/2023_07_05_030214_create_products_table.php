@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('sku', 20)->unique();
+            $table->uuid('sku')->unique();
             $table->double('dollar_price', 20)->default(0);
             $table->double('price_pesos', 20)->default(0);
             $table->double('points', 20)->default(0);

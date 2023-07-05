@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\Routes\RoutesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +25,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/dashboard', [RoutesController::class, 'dashboard'])->name('dashboard');
+    Route::prefix('/admin-')->group(function () {
+        Route::get('product/{product}', [RoutesController::class, 'product'])->name('product');
+        Route::get('products', [RoutesController::class, 'products'])->name('products');
+        Route::get('product-dump', [RoutesController::class, 'productos_dump'])->name('products.dump');
+    });
+
 });

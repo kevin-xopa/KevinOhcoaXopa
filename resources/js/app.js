@@ -8,7 +8,6 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import vuetify from "./plugins/vuetify/vuetify";
 import Layout from '@/Layouts/AppLayout.vue'
 import { Head, Link } from '@inertiajs/vue3';
-import { createPinia } from 'pinia'
 
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
@@ -28,13 +27,9 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
-            .use(ShortKey)
-            .use(VueMask)
-            .use(print)
             .use(vuetify)
             .component("Head", Head)
             .component("Link", Link)
-            .use(createPinia())
             .mount(el);
     },
 });
