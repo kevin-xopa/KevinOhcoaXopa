@@ -1,10 +1,10 @@
 <script setup>
-import Restore from "@/Components/Products/Products/Restore.vue";
+import Restore from "@/Components/Products/Restore.vue";
 import NamePage from "@/Components/Default/NamePage.vue";
 
 // import AppLayout from "@/Layouts/AppLayout.vue";
-const title = "reciclaje de productos";
-const route_name = "products.restore";
+const title = "Products dump";
+const route_name = "products.dump";
 </script>
 
 <template>

@@ -21,7 +21,7 @@ const loading = ref(false);
 const message_alert = ref(null);
 const status_alert = ref(null);
 const form = useForm({
-  slug: props.item.slug,
+  sku: props.item.sku,
 });
 
 // methods
@@ -34,7 +34,7 @@ const erase = async () => {
   try {
     loading.value = true;
 
-    let response = await axios.post("/api/restore-presentation", form);
+    let response = await axios.post("/api/products/restore-product", form);
     const { message, status, data } = response.data;
     message_alert.value = message;
     status_alert.value = status;
@@ -53,7 +53,7 @@ const erase = async () => {
   }
 };
 const message_for_delete = computed(() => {
-  return `¿Estas seguro de restaurar el estado ${props.item.name}?`;
+  return `¿Estas seguro de restaurar el producto ${props.item.name}?`;
 });
 // watchers
 </script>
@@ -78,7 +78,7 @@ const message_for_delete = computed(() => {
             Cerrar
           </v-btn>
           <v-btn
-            v-if="props.item.products_count == 0 && status_alert == null"
+            v-if="status_alert == null"
             color="success"
             variant="flat"
             type="submit"

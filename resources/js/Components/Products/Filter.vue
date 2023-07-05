@@ -5,9 +5,6 @@ import { ref } from "vue";
 const dialog = ref(false);
 const form = ref({
     items_for_paginate: 40,
-    department: null,
-    presentation: null,
-    state: null,
     recently: false,
     order_by: "ASC",
 });

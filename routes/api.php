@@ -28,7 +28,7 @@ Route::prefix('/products')->group(function () {
 
     Route::delete('/delete-product', [ProductsController::class, 'delete']);
 
-    Route::delete('/permanent-delete-product', [ProductsController::class, 'permanent_delete_department']);
+    Route::delete('/permanent-delete-product', [ProductsController::class, 'permanent_delete']);
 
     Route::post('/restore-product', [ProductsController::class, 'restore']);
 

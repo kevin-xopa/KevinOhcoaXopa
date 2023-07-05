@@ -20,6 +20,6 @@ class ConversionPesoToDollarController extends Controller
         // conversion
         $dollars = $cash / $tasaCambio;
 
-        return $dollars;
+        return number_format($dollars, 2);
     }
 }

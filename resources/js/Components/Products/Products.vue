@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import CardItem from "./CardItem.vue";
 import Create from "./Create.vue";
 import Update from "./Update.vue";
 import Delete from "./Delete.vue";
@@ -81,6 +80,7 @@ const get_products = async (n) => {
                 items_for_paginate.value =
                     n.value.items_for_paginate != null ? n.value.items_for_paginate : "";
                 recently.value = n.value.recently != null ? n.value.recently : "";
+                order_by.value = n.value.order_by != null ? n.value.order_by : "ASC";
             }
             page.value = n.name === "page" ? n.value : page.value;
             needle.value = n.name === "needle" ? n.value : needle.value;
@@ -149,9 +149,12 @@ onMounted(() => {
     <v-row v-else-if="!charging && status_request == 200 && products.length > 0">
         <v-data-table v-model:items-per-page="items_for_paginate" :headers="headers" :items="products" item-value="name"
             class="data_table_color rounded-lg elevation-10" hide-default-footer>
-            <!-- <template v-slot:item.balance="{ item }">
-                <p>${{ item.raw.balance }}</p>
-            </template> -->
+            <template v-slot:item.dollar_price="{ item }">
+                <p>$$ {{ item.raw.dollar_price }}</p>
+            </template>
+            <template v-slot:item.price_pesos="{ item }">
+                <p>$ {{ item.raw.price_pesos }}</p>
+            </template>
             <template v-slot:item.actions="{ item }">
                 <ButtonLinkRedirect size="x-small" type="more_info" route_name="product" text="Mas información"
                     class="text-right" :params="{ product: item.raw.url }" />
